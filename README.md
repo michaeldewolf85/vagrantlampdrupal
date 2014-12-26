@@ -6,7 +6,7 @@ A Vagrant LAMP stack for Drupal development.
 Introduction
 ------------
 
-VagrantLamp is a lightweight vagrant box running Ubuntu 12.04 with Drush and Drupal fully installed. There are no extras, only the basic requirements to make Drupal run are installed.
+VagrantLamp is a lightweight vagrant box running Ubuntu 12.04 with Drush and Drupal fully installed. The system is designed to be naked allowing for maximum customizability. Only the basic requirements are installed.
 
 Prerequisites
 -------------
