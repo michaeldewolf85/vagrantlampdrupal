@@ -6,7 +6,7 @@ A Vagrant LAMP stack for web application development.
 Introduction
 ------------
 
-Todo.
+VagrantLamp is a lightweight vagrant box running Ubuntu 12.04 with Drush and Drupal fully installed. There are no extras, only the basic requirements to make Drupal run are installed.
 
 Prerequisites
 -------------
@@ -17,6 +17,10 @@ Prerequisites
 ```
 vagrant box add precise32 http://files.vagrantup.com/precise32.box
 ```
+
+Setup
+-----
+
 * Add the following line to your computer's hosts file
 ```
 192.168.33.10   drupal.dev www.drupal.dev
@@ -25,3 +29,4 @@ vagrant box add precise32 http://files.vagrantup.com/precise32.box
 ```
 vagrant up
 ```
+* In a web browser, visit www.drupal.dev or drupal.dev. There will be stock drupal installation. To login use username admin and password drupal.

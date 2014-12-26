@@ -10,7 +10,7 @@ apt-get install apache2 -y
 # Add a servername to httpd.conf in order to avoid Apache warning.
 echo "ServerName localhost" | sudo tee /etc/apache2/httpd.conf
 # Get MySQL and PHP.
-apt-get install mysql-server php5 libapache2-mod-php5 php5-mysql php-pear -y
+apt-get install mysql-server php5 libapache2-mod-php5 php5-mysql php5-gd php-pear -y
 # Install drush.
 pear channel-discover pear.drush.org
 pear install drush/drush
@@ -22,3 +22,8 @@ sed -i 's/<Directory \/var\/www\/>/<Directory \/vagrant\/docroot\/>/g' /etc/apac
 a2ensite drupal.dev
 # Restart apache so it updates its configuration.
 service apache2 restart
+# Create MySQL database for Drupal.
+echo "CREATE DATABASE drupal" | mysql -uroot -h127.0.0.1
+# Install Drupal in new db.
+cd /vagrant/docroot
+drush site-install --db-url=mysql://root:@localhost/drupal --account-name=admin --account-pass=drupal --site-name="Drupal Sandbox" -y
