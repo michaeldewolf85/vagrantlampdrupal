@@ -19,7 +19,7 @@ vagrant box add precise32 http://files.vagrantup.com/precise32.box
 ```
 * Add the following line to your computer's hosts file
 ```
-192.168.33.10   vagrantlamp.dev
+192.168.33.10   drupal.dev www.drupal.dev
 ```
 * Using a terminal, navigate to this project's directory and run
 ```

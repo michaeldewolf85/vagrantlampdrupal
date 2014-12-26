@@ -13,7 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "precise32"
 
   # Use Shell to bootstrap a LAMP stack.
-  config.vm.provision :shell, path: "vstrap/setup.sh"
+  config.vm.provision :shell, path: "strap/setup.sh"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs

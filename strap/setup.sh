@@ -5,12 +5,20 @@
 export DEBIAN_FRONTEND=noninteractive
 # Ensure that downloads are the latest versions.
 apt-get update
-# Get Apache, MySQL and PHP.
-apt-get install apache2 mysql-server php5 libapache2-mod-php5 php5-mysql php-pear -y
+# Get Apache.
+apt-get install apache2 -y
 # Add a servername to httpd.conf in order to avoid Apache warning.
 echo "ServerName localhost" | sudo tee /etc/apache2/httpd.conf
-# Restart apache so it updates its configuration.
-service apache2 restart
+# Get MySQL and PHP.
+apt-get install mysql-server php5 libapache2-mod-php5 php5-mysql php-pear -y
 # Install drush.
 pear channel-discover pear.drush.org
 pear install drush/drush
+# Configure virtualhost for drupal.dev
+cp /etc/apache2/sites-available/default /etc/apache2/sites-available/drupal.dev
+sed -i 's/ServerAdmin webmaster@localhost/ServerAdmin michaeldewolf85@gmail.com\n        ServerName www.drupal.dev\n        ServerAlias drupal.dev/g' /etc/apache2/sites-available/drupal.dev
+sed -i 's/DocumentRoot \/var\/www/DocumentRoot \/vagrant\/docroot/g' /etc/apache2/sites-available/drupal.dev
+sed -i 's/<Directory \/var\/www\/>/<Directory \/vagrant\/docroot\/>/g' /etc/apache2/sites-available/drupal.dev
+a2ensite drupal.dev
+# Restart apache so it updates its configuration.
+service apache2 restart
