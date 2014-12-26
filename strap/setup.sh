@@ -26,4 +26,4 @@ service apache2 restart
 echo "CREATE DATABASE drupal" | mysql -uroot -h127.0.0.1
 # Install Drupal in new db.
 cd /vagrant/docroot
-drush site-install --db-url=mysql://root:@localhost/drupal --account-name=admin --account-pass=drupal --site-name="Drupal Sandbox" -y
+drush site-install --db-url=mysql://root:@localhost/drupal --account-name=admin --account-pass=drupal -y
