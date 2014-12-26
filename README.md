@@ -11,17 +11,17 @@ Todo.
 Prerequisites
 -------------
 
-1. Download and install VirtualBox. See https://www.virtualbox.org/.
-2. Download and install Vagrant. See https://www.vagrantup.com/.
-3. Download the Ubuntu precise 32 VirtualBox base box for Vagrant.
+* Download and install VirtualBox. See https://www.virtualbox.org/.
+* Download and install Vagrant. See https://www.vagrantup.com/.
+* Download the Ubuntu precise 32 VirtualBox base box for Vagrant.
 ```
 vagrant box add precise32 http://files.vagrantup.com/precise32.box
 ```
-4. Add the following line to your computer's hosts file
+* Add the following line to your computer's hosts file
 ```
 192.168.33.10   vagrantlamp.dev
 ```
-5. Using a terminal, navigate to this project's directory and run
+* Using a terminal, navigate to this project's directory and run
 ```
 vagrant up
 ```
