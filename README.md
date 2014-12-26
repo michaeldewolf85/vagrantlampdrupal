@@ -1,4 +1,4 @@
-vagrantlamp
+vagrantlampdrupal
 ===========
 
 A Vagrant LAMP stack for web application development.
