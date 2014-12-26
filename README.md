@@ -21,3 +21,7 @@ vagrant box add precise32 http://files.vagrantup.com/precise32.box
 ```
 192.168.33.10   vagrantlamp.dev
 ```
+5. Using a terminal, navigate to this project's directory and run
+```
+vagrant up
+```
