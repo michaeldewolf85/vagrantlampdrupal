@@ -1,7 +1,7 @@
 vagrantlampdrupal
 ===========
 
-A Vagrant LAMP stack for web application development.
+A Vagrant LAMP stack for Drupal development.
 
 Introduction
 ------------
