@@ -29,4 +29,4 @@ Setup
 ```
 vagrant up
 ```
-* In a web browser, visit www.drupal.dev or drupal.dev. There will be stock drupal installation. To login use username admin and password drupal.
+* In a web browser, visit http://www.drupal.dev or http://drupal.dev. There will be stock drupal installation. To login use username admin and password drupal.
