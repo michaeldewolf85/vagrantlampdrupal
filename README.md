@@ -17,3 +17,7 @@ Prerequisites
 ```
 vagrant box add precise32 http://files.vagrantup.com/precise32.box
 ```
+4. Add the following line to your computer's hosts file
+```
+192.168.33.10   vagrantlamp.dev
+```
