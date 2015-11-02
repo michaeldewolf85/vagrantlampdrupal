@@ -1,0 +1,11 @@
+<?php
+
+/**
+ * @file
+ * Contains main module hooks.
+ */
+
+function dakine_language_from_url($languages) {
+  require_once DRUPAL_ROOT . '/includes/locale.inc';
+  return locale_language_from_url($languages);
+}
