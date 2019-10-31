@@ -1,0 +1,62 @@
+<?php
+
+/**
+ * @file
+ * Contains main module hooks.
+ */
+
+function dakine_language_from_url($languages) {
+  require_once DRUPAL_ROOT . '/includes/locale.inc';
+  $language_url = FALSE;
+  if (!language_negotiation_get_any(LOCALE_LANGUAGE_NEGOTIATION_URL)) {
+    return $language_url;
+  }
+
+  if (variable_get('locale_language_negotiation_url_part', LOCALE_LANGUAGE_NEGOTIATION_URL_PREFIX) == LOCALE_LANGUAGE_NEGOTIATION_URL_PREFIX) {
+    list($language, $_GET['q']) = dakine_language_url_split_prefix(isset($_GET['q']) ? $_GET['q'] : NULL, $languages);
+    if ($language !== FALSE) {
+      $language_url = $language->language;
+    }
+    return $language_url;
+  }
+
+  return locale_language_from_url($languages);
+}
+
+/**
+ * Splits the given path into prefix and actual path.
+ *
+ * Parse the given path and return the language object identified by the prefix
+ * and the actual path.
+ *
+ * @param $path
+ *   The path to split.
+ * @param $languages
+ *   An array of valid languages.
+ *
+ * @return
+ *   An array composed of:
+ *    - A language object corresponding to the identified prefix on success,
+ *      FALSE otherwise.
+ *    - The path without the prefix on success, the given path otherwise.
+ */
+function dakine_language_url_split_prefix($path, $languages) {
+  $args = empty($path) ? array() : explode('/', $path);
+  $prefix = array_shift($args);
+  if (count($args) > 0) {
+    $prefix .= '/' . array_shift($args);
+  }
+
+  if ($prefix == 'ca/en') {
+    return array($languages['en'], implode('/', $args));
+  }
+  // Search prefix within enabled languages.
+  foreach ($languages as $language) {
+    if (!empty($language->prefix) && $language->prefix == $prefix) {
+      // Rebuild $path with the language removed.
+      return array($language, implode('/', $args));
+    }
+  }
+
+  return array(FALSE, $path);
+}

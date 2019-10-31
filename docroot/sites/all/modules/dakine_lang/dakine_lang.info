@@ -1,0 +1,3 @@
+name = Dakine Language
+description = Handles multilingual URLs
+core = 7.x

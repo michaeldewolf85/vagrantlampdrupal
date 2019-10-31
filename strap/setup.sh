@@ -19,7 +19,7 @@ cp /etc/apache2/sites-available/default /etc/apache2/sites-available/drupal.dev
 sed -i 's/ServerAdmin webmaster@localhost/ServerAdmin michaeldewolf85@gmail.com\n        ServerName www.drupal.dev\n        ServerAlias drupal.dev/g' /etc/apache2/sites-available/drupal.dev
 sed -i 's/DocumentRoot \/var\/www/DocumentRoot \/vagrant\/docroot/g' /etc/apache2/sites-available/drupal.dev
 sed -i 's/<Directory \/var\/www\/>/<Directory \/vagrant\/docroot\/>/g' /etc/apache2/sites-available/drupal.dev
-sed -i 's/AllowOverride None/AllowOverride All/>/g' /etc/apache2/sites-available/drupal.dev
+sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/sites-available/drupal.dev
 a2ensite drupal.dev
 a2enmod rewrite
 # Restart apache so it updates its configuration.
@@ -29,3 +29,5 @@ echo "CREATE DATABASE drupal" | mysql -uroot -h127.0.0.1
 # Install Drupal in new db.
 cd /vagrant/docroot
 drush site-install --db-url=mysql://root:@localhost/drupal --account-name=admin --account-pass=drupal -y
+drush en -y locale entity entity_translation title
+drush php-script setup --script-path=../strap/php
